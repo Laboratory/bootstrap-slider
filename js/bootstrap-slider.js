@@ -1094,7 +1094,17 @@
 				if (this.options.range) {
 					var diff1 = Math.abs(this.percentage[0] - percentage);
 					var diff2 = Math.abs(this.percentage[1] - percentage);
-					this.dragged = (diff1 < diff2) ? 0 : 1;
+					if (this.percentage[0] === this.percentage[1]) {
+						if (percentage < this.percentage[0]) {
+							this.dragged = 0;
+						}
+						else {
+							this.dragged = 1;
+						}
+					}
+					else {
+						this.dragged = (diff1 < diff2) ? 0 : 1;
+					}
 				} else {
 					this.dragged = 0;
 				}
